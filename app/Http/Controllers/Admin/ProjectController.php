@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -78,9 +79,22 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $data = $request->validated();
+        $slug = Project::generateSlug($request->title);
+        $data['slug'] = $slug;
+        // if($request->hasFile('cover_image')){
+        //     if ($post->cover_image) {
+        //         Storage::delete($post->cover_image);
+        //     }
+
+        //     $path = Storage::disk('public')->put('post_images', $request->cover_image);
+        //     $data['cover_image'] = $path;
+        // }
+        $updated = $project->title;
+        $project->update($data);
+        return redirect()->route('admin.projects.index')->with('message', "$updated updated successfully");
     }
 
     /**

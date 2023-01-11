@@ -17,8 +17,8 @@
             <div class="col-12">
                 <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data" class="p-4">
                     @csrf
+                    {{-- title --}}
                       <div class="mb-3">
-                        {{-- title --}}
                         <label for="title" class="form-label">Titolo</label>
                         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
                         @error('title')
@@ -27,7 +27,7 @@
                       </div>
                       {{-- description --}}
                       <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
+                        <label for="description" class="form-label">Desccrizione</label>
                         <textarea class="form-control" id="description" name="description"></textarea>
                       </div>
                       {{-- langauges --}}
@@ -46,7 +46,7 @@
                       {{-- difficulty --}}
                       <div class="mb-3">
                         <label for="difficulty" class="form-label">Livello difficoltà</label>
-                          <input type="text" class="form-control @error('difficulty') is-invalid @enderror" id="difficulty" name="difficulty">
+                          <input type="number" class="form-control @error('difficulty') is-invalid @enderror" id="difficulty" name="difficulty">
                       </div>
                       {{-- team --}}
                       <div class="mb-3">
