@@ -3,9 +3,11 @@
 #admin{
     height: 100vh;
     display:flex;
+    overflow-y: hidden;
   
     #wrapper{
       flex-grow: 1;
+      overflow-y: auto;
     }
     #sidebarMenu {
       background-color: black;
