@@ -44,9 +44,23 @@
                           <input type="text" class="form-control @error('framework') is-invalid @enderror" id="framework" name="framework">
                       </div>
                       {{-- difficulty --}}
-                      <div class="mb-3">
-                        <label for="difficulty" class="form-label">Livello difficoltà</label>
-                          <input type="number" class="form-control @error('difficulty') is-invalid @enderror" id="difficulty" name="difficulty">
+                      <div>
+                        <label for="difficulty">Livello di difficoltà (da 1 a 10)</label>
+                        <select name="difficulty" class="form-control @error('difficulty') is-invalid @enderror">
+                            <option selected value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        @error('difficulty')
+                            <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
                       </div>
                       {{-- team --}}
                       <div class="mb-3">

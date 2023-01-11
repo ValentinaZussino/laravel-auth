@@ -44,11 +44,24 @@
                         <label for="framework" class="form-label">Framework utilizzati</label>
                           <input type="text" class="form-control @error('framework') is-invalid @enderror" id="framework" name="framework" value="{{old('framework', $project->framework)}}">
                       </div>
-                      {{-- difficulty --}}
-                      <div class="mb-3">
-                        <label for="difficulty" class="form-label">Livello difficoltà</label>
-                          <input type="number" class="form-control @error('difficulty') is-invalid @enderror" id="difficulty" name="difficulty" value="{{old('difficulty', $project->difficulty)}}">
-                      </div>
+                      <div>
+                        <label for="difficulty">Livello di difficoltà (da 1 a 10)</label>
+                        <select name="difficulty" class="form-control @error('difficulty') is-invalid @enderror">
+                            <option value="1" {{old('difficulty', $project->difficulty == '1' ? 'selected' : '') }}>1</option>
+                            <option value="2" {{old('difficulty', $project->difficulty == '2' ? 'selected' : '') }}>2</option>
+                            <option value="3" {{old('difficulty', $project->difficulty == '3' ? 'selected' : '') }}>3</option>
+                            <option value="4" {{old('difficulty', $project->difficulty == '4' ? 'selected' : '') }}>4</option>
+                            <option value="5" {{old('difficulty', $project->difficulty == '5' ? 'selected' : '') }}>5</option>
+                            <option value="6" {{old('difficulty', $project->difficulty == '6' ? 'selected' : '') }}>6</option>
+                            <option value="7" {{old('difficulty', $project->difficulty == '7' ? 'selected' : '') }}>7</option>
+                            <option value="8" {{old('difficulty', $project->difficulty == '8' ? 'selected' : '') }}>8</option>
+                            <option value="9" {{old('difficulty', $project->difficulty == '9' ? 'selected' : '') }}>9</option>
+                            <option value="10" {{old('difficulty', $project->difficulty == '10' ? 'selected' : '') }}>10</option>
+                        </select>
+                        @error('difficulty')
+                            <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
                       {{-- team --}}
                       <div class="mb-3">
                         <label for="team" class="form-label">Collaboratori</label>
