@@ -44,7 +44,7 @@
                           <input type="text" class="form-control @error('framework') is-invalid @enderror" id="framework" name="framework">
                       </div>
                       {{-- difficulty --}}
-                      <div>
+                      <div class="mb-3">
                         <label for="difficulty">Livello di difficoltà (da 1 a 10)</label>
                         <select name="difficulty" class="form-control @error('difficulty') is-invalid @enderror">
                             <option selected value="1">1</option>

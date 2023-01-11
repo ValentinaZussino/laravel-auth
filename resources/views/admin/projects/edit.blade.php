@@ -44,7 +44,8 @@
                         <label for="framework" class="form-label">Framework utilizzati</label>
                           <input type="text" class="form-control @error('framework') is-invalid @enderror" id="framework" name="framework" value="{{old('framework', $project->framework)}}">
                       </div>
-                      <div>
+                      {{-- difficulty --}}
+                      <div class="mb-3">
                         <label for="difficulty">Livello di difficoltà (da 1 a 10)</label>
                         <select name="difficulty" class="form-control @error('difficulty') is-invalid @enderror">
                             <option value="1" {{old('difficulty', $project->difficulty == '1' ? 'selected' : '') }}>1</option>
@@ -61,7 +62,7 @@
                         @error('difficulty')
                             <div class="invalid-feedback">{{$message}}</div>
                         @enderror
-                    </div>
+                     </div>
                       {{-- team --}}
                       <div class="mb-3">
                         <label for="team" class="form-label">Collaboratori</label>
