@@ -32,6 +32,7 @@ class UpdateProjectRequest extends FormRequest
             'difficulty' => 'nullable',
             'team' => 'nullable',
             'git_link' => 'nullable',
+            'cover_image' => ['nullable','image','max:1000']
         ];
     }
 }

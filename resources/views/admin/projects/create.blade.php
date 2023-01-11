@@ -11,7 +11,7 @@
                 </ul>
             </div>
             @endif
-        </div> --}}
+      </div> --}}
     <h1>Create Project</h1>
         <div class="row bg-white">
             <div class="col-12">
@@ -59,13 +59,13 @@
                           <input type="text" class="form-control @error('git_link') is-invalid @enderror" id="git_link" name="git_link">
                       </div>
                       {{-- image --}}
-                      {{-- <div class="mb-3">
+                      <div class="mb-3">
                         <label for="cover_image" class="form-label">Immagine</label>
                         <input type="file" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror" >
                         @error('cover_image')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                      </div> --}}
+                      </div>
                       <button type="submit" class="btn btn-success">Submit</button>
                       <button type="reset" class="btn btn-primary">Reset</button>
                 </form>

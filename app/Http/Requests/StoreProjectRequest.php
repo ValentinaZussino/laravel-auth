@@ -31,6 +31,7 @@ class StoreProjectRequest extends FormRequest
             'difficulty' => 'nullable',
             'team' => 'nullable',
             'git_link' => 'nullable',
+            'cover_image' => 'nullable|image|max: 250'
         ];
     }
     public function messages()

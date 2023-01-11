@@ -59,17 +59,18 @@
                         <label for="git_link" class="form-label">Link per git</label>
                           <input type="text" class="form-control @error('git_link') is-invalid @enderror" id="git_link" name="git_link" value="{{old('git_link', $project->git_link)}}">
                       </div>
-                      {{-- < class="d-flex">
-                        <div class="media me-4">
-                            <img class="shadow" width="150" src="{{asset('storage/' . $post->cover_image)}}" alt="{{$post->title}}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="cover_image" class="form-label">Replace post image</label>
-                            <input type="file" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror" >
-                            @error('cover_image')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div> --}}
+                      <div class="d-flex">
+                            <div class="media me-4">
+                                <img class="shadow" width="150" src="{{asset('storage/' . $project->cover_image)}}" alt="{{$project->title}}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="cover_image" class="form-label">Replace project image</label>
+                                <input type="file" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror" >
+                                @error('cover_image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                       </div>
                       <button type="submit" class="btn btn-success">Submit</button>
                       <button type="reset" class="btn btn-primary">Reset</button>
                 </form>
