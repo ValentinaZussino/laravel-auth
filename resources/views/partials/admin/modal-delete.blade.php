@@ -6,7 +6,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <p>Confermi di voler eliminare <span id="modal-item-title" class="text-uppercase">{{$project->title}}</span>?</p>
+            {{-- <p>Confermi di voler eliminare <span id="modal-item-title" class="text-uppercase">{{$project->title}}</span>?</p> --}}
+            <p>Confermi di voler eliminare <span id="modal-item-title" class="text-uppercase"></span>?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
