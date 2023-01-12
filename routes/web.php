@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
@@ -35,6 +36,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')
          Route::get('/', [DashboardController::class, 'index'])
          ->name('dashboard');
          Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
+         Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug']);
    });
 
 require __DIR__.'/auth.php';
