@@ -13,7 +13,7 @@ class UpdateTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class UpdateTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'workflow' => 'required|max:15'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'workflow.required' => 'Il parametro è obbligatorio',
+            'workflow.max' => 'La lunghezza del parametro non può superare i :max caratteri',
         ];
     }
 }
