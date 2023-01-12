@@ -14,6 +14,7 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
+            <th scope="col">Workflow</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>
@@ -24,6 +25,11 @@
                     <th scope="row">{{$project->id}}</th>
                     <td><a href="{{route('admin.projects.show', $project->slug)}}" title="View project">{{$project->title}}</a></td>
                     <td>{{Str::limit($project->description,100)}}</td>
+                    @foreach($types as $type)
+                        @if($type->id === $project->type_id)
+                        <td>{{$type->workflow}}</td>
+                        @endif
+                    @endforeach
                     <td><a class="link-secondary" href="{{route('admin.projects.edit', $project->slug)}}" title="Edit project"><i class="fa-solid fa-pen"></i></a></td>
                     <td>
                         <form action="{{route('admin.projects.destroy', $project->slug)}}" method="POST">

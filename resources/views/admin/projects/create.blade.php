@@ -72,6 +72,19 @@
                         <label for="git_link" class="form-label">Link per git</label>
                           <input type="text" class="form-control @error('git_link') is-invalid @enderror" id="git_link" name="git_link">
                       </div>
+                      {{-- workflow type --}}
+                      <div class="mb-3">
+                        <label for="type_id" class="form-label">Seleziona workflow</label>
+                        <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror">
+                          <option value="">Seleziona workflow</option>
+                          @foreach ($types as $type)
+                              <option value="{{$type->id}}" {{ $type->id == old('type_id') ? 'selected' : '' }}>{{$type->workflow}}</option>
+                          @endforeach
+                        </select>
+                        @error('type_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                      </div>
                       {{-- image --}}
                       <div class="mb-3">
                         <label for="cover_image" class="form-label">Immagine</label>
