@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Devlang;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -31,7 +32,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $devlangs = Devlang::all();
+        return view('admin.projects.create', compact('types', 'devlangs'));
     }
 
     /**
@@ -51,6 +53,11 @@ class ProjectController extends Controller
         }
 
         $new_project = Project::create($data);
+
+        if($request->has('devlangs')){
+            $new_project->devlangs()->attach($request->devlangs);
+        }
+
         return redirect()->route('admin.projects.show', $new_project->slug);
     }
 
@@ -74,7 +81,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $devlangs = Devlang::all();
+        return view('admin.projects.edit', compact('project', 'types', 'devlangs'));
     }
 
     /**
@@ -99,6 +107,13 @@ class ProjectController extends Controller
         }
         $updated = $project->title;
         $project->update($data);
+
+        if($request->has('devlangs')){
+            $project->devlangs()->sync($request->devlangs);
+        } else {
+            $project->devlangs()->sync([]);
+        }
+        
         return redirect()->route('admin.projects.index')->with('message', "$updated updated successfully");
     }
 

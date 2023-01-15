@@ -13,7 +13,7 @@ class StoreDevlangRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class StoreDevlangRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:devlangs|max:50'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Il nome del linguaggio è obbligatorio',
+            'name.unique' => 'Il nome del linguaggio esiste già',
+            'name.max' => 'Il nome del linguaggio non può superare i :max caratteri',
         ];
     }
 }

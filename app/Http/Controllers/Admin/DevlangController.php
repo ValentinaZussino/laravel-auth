@@ -16,7 +16,8 @@ class DevlangController extends Controller
      */
     public function index()
     {
-        //
+        $devlangs = Devlang::all();
+        return view('admin.devlangs.index', compact('devlangs'));
     }
 
     /**
@@ -37,7 +38,11 @@ class DevlangController extends Controller
      */
     public function store(StoreDevlangRequest $request)
     {
-        //
+        $data = $request->validated();
+        $slug = Devlang::generateSlug($request->name);
+        $data['slug'] = $slug;
+        Devlang::create($data);
+        return redirect()->back()->with('message', "Language $slug added successfully");
     }
 
     /**
@@ -71,7 +76,11 @@ class DevlangController extends Controller
      */
     public function update(UpdateDevlangRequest $request, Devlang $devlang)
     {
-        //
+        $data = $request->validated();
+        $slug = Devlang::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $devlang->update($data);
+        return redirect()->back()->with('message', "Language $slug updated successfully");
     }
 
     /**
@@ -82,6 +91,8 @@ class DevlangController extends Controller
      */
     public function destroy(Devlang $devlang)
     {
-        //
+        $devlang->delete();
+
+        return redirect()->back()->with('message', "Language $devlang->name removed successfully");
     }
 }

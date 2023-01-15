@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateDevlangRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateDevlangRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,15 @@ class UpdateDevlangRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required',Rule::unique('devlangs')->ignore($this->devlang),'max:50']
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'il nome del linguaggio è obbligatorio',
+            'name.unique' => 'il nome del linguaggio esiste già',
+            'name.max' => 'il nome del linguaggio non può superare i :max caratteri',
         ];
     }
 }
