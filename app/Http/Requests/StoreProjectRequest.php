@@ -26,7 +26,6 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' =>'required|unique:projects|max:100|min:3',
 	        'description' => 'nullable',
-            'dev_lang' => 'required',
             'framework' => 'nullable',
             'difficulty' => 'nullable',
             'team' => 'nullable',
@@ -42,7 +41,6 @@ class StoreProjectRequest extends FormRequest
             'title.max'=>'Il titolo del progetto non può superare i :max caratteri',
             'title.min'=>'Il titolo del progetto non può essere inferiore a :min caratteri',
             'title.unique:projects'=>'Questo titolo esiste già!',
-            'dev_lang.required'=>'Immetti almeno un linguaggio utilizzato'
         ];
     }
 }
