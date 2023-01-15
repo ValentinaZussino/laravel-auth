@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DevlangController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
@@ -37,6 +38,8 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')
          ->name('dashboard');
          Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
          Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug']);
+         Route::resource('devlangs', DevlangController::class)->parameters(['devlangs' => 'devlang:slug'])->except('show', 'create', 'edit');
+
    });
 
 require __DIR__.'/auth.php';
