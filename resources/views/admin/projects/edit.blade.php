@@ -32,13 +32,13 @@
                         <textarea class="form-control" id="description" name="description">{{old('description', $project->description)}}</textarea>
                       </div>
                       {{-- langauges --}}
-                      {{-- <div class="mb-3">
-                        <label for="dev_lang" class="form-label">Linguaggi utilizzati</label>
-                          <input type="text" class="form-control @error('dev_lang') is-invalid @enderror" id="dev_lang" name="dev_lang" value="{{old('dev_lang', $project->dev_lang)}}">
-                          @error('dev_lang')
-                          <div class="invalid-feedback">{{ $message }}</div>
-                          @enderror
-                      </div> --}}
+                      <div class="mb-3">
+                        <label for="devlangs" class="me-2">Linguaggi utilizzati: </label>
+                        @foreach ($devlangs as $devlang)
+                            <input type="checkbox" name="devlangs[]" value="{{$devlang->id}}">
+                            <span class="text-capitalize pe-2">{{$devlang->name}}</span>
+                        @endforeach
+                      </div>
                       {{-- frameworks --}}
                       <div class="mb-3">
                         <label for="framework" class="form-label">Framework utilizzati</label>
@@ -48,16 +48,9 @@
                       <div class="mb-3">
                         <label for="difficulty">Livello di difficoltà (da 1 a 10)</label>
                         <select name="difficulty" class="form-control @error('difficulty') is-invalid @enderror">
-                            <option value="1" {{old('difficulty', $project->difficulty == '1' ? 'selected' : '') }}>1</option>
-                            <option value="2" {{old('difficulty', $project->difficulty == '2' ? 'selected' : '') }}>2</option>
-                            <option value="3" {{old('difficulty', $project->difficulty == '3' ? 'selected' : '') }}>3</option>
-                            <option value="4" {{old('difficulty', $project->difficulty == '4' ? 'selected' : '') }}>4</option>
-                            <option value="5" {{old('difficulty', $project->difficulty == '5' ? 'selected' : '') }}>5</option>
-                            <option value="6" {{old('difficulty', $project->difficulty == '6' ? 'selected' : '') }}>6</option>
-                            <option value="7" {{old('difficulty', $project->difficulty == '7' ? 'selected' : '') }}>7</option>
-                            <option value="8" {{old('difficulty', $project->difficulty == '8' ? 'selected' : '') }}>8</option>
-                            <option value="9" {{old('difficulty', $project->difficulty == '9' ? 'selected' : '') }}>9</option>
-                            <option value="10" {{old('difficulty', $project->difficulty == '10' ? 'selected' : '') }}>10</option>
+                          @for ($i=0; $i<=10;$i++)
+                              <option value="{{$i}}" {{old('difficulty') == $i ? 'selected': ''}}>{{$i}}</option>
+                          @endfor
                         </select>
                         @error('difficulty')
                             <div class="invalid-feedback">{{$message}}</div>

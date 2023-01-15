@@ -12,7 +12,7 @@
             </div>
             @endif
       </div> --}}
-    <h1>Create Project</h1>
+    <h1>Aggiungi un nuovo progetto</h1>
         <div class="row bg-white">
             <div class="col-12">
                 <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data" class="p-4">
@@ -31,13 +31,13 @@
                         <textarea class="form-control" id="description" name="description"></textarea>
                       </div>
                       {{-- langauges --}}
-                      {{-- <div class="mb-3">
-                        <label for="dev_lang" class="form-label">Linguaggi utilizzati</label>
-                          <input type="text" class="form-control @error('dev_lang') is-invalid @enderror" id="dev_lang" name="dev_lang">
-                          @error('dev_lang')
-                          <div class="invalid-feedback">{{ $message }}</div>
-                          @enderror
-                      </div> --}}
+                      <div class="mb-3">
+                        <label for="devlangs" class="me-2">Linguaggi utilizzati: </label>
+                        @foreach ($devlangs as $devlang)
+                            <input type="checkbox" name="devlangs[]" value="{{$devlang->id}}">
+                            <span class="text-capitalize pe-2">{{$devlang->name}}</span>
+                        @endforeach
+                      </div>
                       {{-- frameworks --}}
                       <div class="mb-3">
                         <label for="framework" class="form-label">Framework utilizzati</label>
@@ -47,16 +47,9 @@
                       <div class="mb-3">
                         <label for="difficulty">Livello di difficoltà (da 1 a 10)</label>
                         <select name="difficulty" class="form-control @error('difficulty') is-invalid @enderror">
-                            <option selected value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
+                          @for ($i=0; $i<=10;$i++)
+                              <option value="{{$i}}" {{old('difficulty') == $i ? 'selected': ''}}>{{$i}}</option>
+                          @endfor
                         </select>
                         @error('difficulty')
                             <div class="invalid-feedback">{{$message}}</div>
