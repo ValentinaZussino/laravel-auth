@@ -15,7 +15,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white{{ Route::currentRouteName() == 'admin.devlangs.index' ? 'bg-secondary' : '' }}" href="{{route('admin.devlangs.index')}}">
+            <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.devlangs.index' ? 'bg-secondary' : '' }}" href="{{route('admin.devlangs.index')}}">
                 <i class="fa-solid fa-bookmark fa-lg fa-fw"></i> Dev Languages
             </a>
         </li>
