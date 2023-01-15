@@ -1,5 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 
+img {
+  max-width: 100%;
+}
+
 #admin{
     height: 100vh;
     display:flex;
