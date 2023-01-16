@@ -48,7 +48,7 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($request->title);
         $data['slug'] = $slug;
         if($request->hasFile('cover_image')){
-            $path = Storage::disk('public')->put('post_images', $request->cover_image);
+            $path = Storage::put('post_images', $request->cover_image);
             $data['cover_image'] = $path;
         }
 
@@ -102,7 +102,7 @@ class ProjectController extends Controller
                 Storage::delete($project->cover_image);
             }
 
-            $path = Storage::disk('public')->put('post_images', $request->cover_image);
+            $path = Storage::put('post_images', $request->cover_image);
             $data['cover_image'] = $path;
         }
         $updated = $project->title;
