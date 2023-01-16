@@ -6,7 +6,9 @@
 
     <div class="w-25 h-25">
         @if($project->cover_image)
-        <img src="{{ asset('storage/' . $project->cover_image) }}">
+        <img src="{{ asset('storage/' . $project->cover_image) }}">    
+            @else
+            <img src="https://via.placeholder.com/1200x840/DDDDDD/444444?text=VZ+Portfolio" alt="C/O https://placeholder.com/"> 
         @endif
     </div>
 

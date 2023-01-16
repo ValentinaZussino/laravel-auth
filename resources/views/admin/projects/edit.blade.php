@@ -82,8 +82,12 @@
                       {{-- image --}}
                       <div class="d-flex">
                             <div class="media me-4">
+                              @if($project->cover_image)
                                 <img class="shadow" width="150" src="{{asset('storage/' . $project->cover_image)}}" alt="{{$project->title}}">
-                            </div>
+                                @else
+                                <img class="shadow" width="150" src="https://via.placeholder.com/1200x840/DDDDDD/444444?text=VZ+Portfolio" alt="C/O https://placeholder.com/">
+                              @endif
+                              </div>
                             <div class="mb-3">
                                 <label for="cover_image" class="form-label">Replace project image</label>
                                 <input type="file" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror" >
